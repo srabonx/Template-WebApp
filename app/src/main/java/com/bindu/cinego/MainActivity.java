@@ -59,9 +59,15 @@ public class MainActivity extends AppCompatActivity {
         m_webView.setWebViewClient(new WebViewController());
         m_webView.setWebChromeClient(new WebChromeController(this,MainActivity.this));
 
-        if(IsNetworkConnected())
+        if(IsNetworkConnected() && IsNetworkAvailable())
         {
             m_webView.loadUrl(getString(R.string.web_url));
+        }
+        else
+        {
+            Intent intent = new Intent(this, NoInternetActivity.class);
+            startActivity(intent);
+            finish();
         }
 
     }
