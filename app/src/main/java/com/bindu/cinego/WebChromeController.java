@@ -57,8 +57,6 @@ public class WebChromeController extends WebChromeClient
         m_customView = view;
         m_customViewCallback = callback;
 
-        m_activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
-        m_activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         m_fullscreenContainer.addView(m_customView,new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT,
@@ -67,10 +65,17 @@ public class WebChromeController extends WebChromeClient
 
 
         m_fullscreenContainer.setVisibility(View.VISIBLE);
-        m_fullscreenContainer.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+        m_fullscreenContainer.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE |
+                View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
 
        m_originalOrientation =  m_activity.getRequestedOrientation();
        m_originalSystemUiVisibility = m_activity.getWindow().getDecorView().getSystemUiVisibility();
+
+        m_activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE |
+                                                                    View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                                                                    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+        m_activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
     }
 

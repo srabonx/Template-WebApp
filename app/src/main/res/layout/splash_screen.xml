@@ -6,13 +6,16 @@
     android:layout_height="match_parent"
     android:background="@drawable/splash_screen_background"
     tools:context=".SplashScreenActivity"
+    android:gravity="center"
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        android:scaleType="fitCenter"/>
+        android:id="@+id/cinegoLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/cinego_logo"
+        android:scaleType="centerInside"/>
 
 
 </LinearLayout>
